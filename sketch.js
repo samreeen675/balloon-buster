@@ -3,7 +3,7 @@
 var bow, arrow, background, redB, pinkB, greenB, blueB, arrowGroup, redBall, arrow;
 var bowImage, arrowImage, green_balloonImage, red_balloonImage, pink_balloonImage, blue_balloonImage, backgroundImage;
 
-var redBCounter = 0, arrowCounter = 0;
+var redBCounter = 0,blueBCounter = 0,greenBCounter = 0,pinkBCounter = 0, arrowCounter = 0;
 
 function preload() {
 
