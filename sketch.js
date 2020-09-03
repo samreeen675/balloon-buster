@@ -81,11 +81,11 @@ function draw() {
     if (select_balloon == 1) {
       redBalloon();
     } else if (select_balloon == 2) {
-      redBalloon();
+      blueBalloon();
     } else if (select_balloon == 3) {
-      redBalloon();
+      greenBalloon();
     } else {
-      redBalloon();
+      pinkBalloon();
     }
   }
 
@@ -95,9 +95,36 @@ function draw() {
   //     score=score+1;
   // }
 
-
-
-
+//hitiing each individual redbaloon
+  
+for (var i = 0; i < redBCounter; i++) {
+    if (redB.get(i) != undefined && redB.get(i).isTouching(arrowGroup)) {
+     redB.get(i).destroy();
+     
+      score=score+1;
+    }
+ }
+for (var i = 0; i < blueBCounter; i++) {
+    if (blueB.get(i) != undefined && blueB.get(i).isTouching(arrowGroup)) {
+     blueB.get(i).destroy();
+     
+      score=score+1;
+    }
+ }
+  for (var i = 0; i < greenBCounter; i++) {
+    if (greenB.get(i) != undefined && greenB.get(i).isTouching(arrowGroup)) {
+     greenB.get(i).destroy();
+     
+      score=score+1;
+    }
+ }
+ for (var i = 0; i < pinkBCounter; i++) {
+    if (pinkB.get(i) != undefined && pinkB.get(i).isTouching(arrowGroup)) {
+     pinkB.get(i).destroy();
+     
+      score=score+1;
+    }
+ } 
   //  if (arrowGroup.isTouching(greenB)) {
   //   greenB.destroyEach();
   //   arrowGroup.destroyEach();
@@ -120,19 +147,20 @@ function draw() {
   //   score=score+1;
   // }
 
-  for (var i = 0; i < arrowCounter; i++) {
-    for (var j = 0; j < redBCounter; j++) {
+  //for (var i = 0; i < arrowCounter; i++) {
+   // for (var j = 0; j < redBCounter; j++) {
 
-      if (arrowGroup.get(i) != undefined && redB.get(j) != undefined &&arrowGroup.get(i).x>=100 && redB.get(j).x<=480) {
-        if (arrowGroup.get(i).overlap(redB.get(j))) {
-          redB.get(j).destroy()
-          arrowGroup.get(i).destroy()
-          score = score + 1;
-          console.log("destroyed")
+     // if (arrowGroup.get(i) != undefined && redB.get(j) != undefined &&arrowGroup.get(i).x>=100 && redB.get(j).x<=480) {
+       // if (arrowGroup.get(i).overlap(redB.get(j))) {
+       //   redB.get(j).destroy()
+        //  arrowGroup.get(i).destroy()
+         // score = score + 1;
+         // console.log("destroyed")
         }
       }
     }
   }
+  
   // if (arrow != undefined && redBall != undefined) {
   //   if (arrow.overlap(redBall)) {
   //     redBall.destroy()
@@ -146,8 +174,10 @@ function draw() {
   text("Score: " + score, 500, 50);
 }
 
-
 function redBalloon() {
+  
+// am adding a frame count in the redballon function so then b aloons will come at specific frame for example each 80th frame.
+  if(frameCount%80==0){
   redBall = createSprite(0, Math.round(random(20, 370)), 10, 10);
   redBall.addImage(red_balloonImage);
   redBall.velocityX = 3;
@@ -158,7 +188,7 @@ function redBalloon() {
   redB.add(redBall);
 
   redBCounter++;
-
+  }
 }
 
 function blueBalloon() {
@@ -168,6 +198,7 @@ function blueBalloon() {
   blue.lifetime = 300;
   blue.scale = 0.1;
   blueB.add(blue);
+  blueBCounter;
 }
 
 function greenBalloon() {
@@ -177,6 +208,7 @@ function greenBalloon() {
   green.lifetime = 300;
   green.scale = 0.1;
   greenB.add(green);
+  greenBCounter;
 }
 
 function pinkBalloon() {
@@ -186,6 +218,7 @@ function pinkBalloon() {
   pink.lifetime = 300;
   pink.scale = 1
   pinkB.add(pink);
+  pinkBCounter;
 }
 
 
